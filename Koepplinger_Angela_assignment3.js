@@ -34,13 +34,22 @@ var passenger = function (name,age,gender) {
 	};
 	
 	var getAge = function () {
+		if(age < 15) {
+			console.log(name + " must be accompanied by an adult on this flight")
+		} else {
+			console.log(name + " is an adult passenger")
+		};
 		return age;
+	};
+
+	var getGender = function () {
+		return gender;
 	};
 
 	return { 
 		"name": getName,
 		"age": getAge,		
-		//"gender": getGender,
+		"gender": getGender,
 		"addContents": addLuggage,
 		"showContents": showLuggage
 
@@ -60,10 +69,13 @@ passenger1.addContents(["bathing suits", "sun glasses"]);
 passenger2.addContents(["beach chairs", "snorkle", "towels"])
 passenger3.addContents(["sand toys", "umbrella", "crab net"]);
 
-console.log("Angela's age: " + passenger1.age());
+console.log(passenger1.name() + " is " + passenger1.age());
+console.log(passenger2.name() + " is " + passenger2.age());
+console.log(passenger3.name() + " is " + passenger3.age());
 
-var ADB = passenger1.showContents();
-console.log(ADB);
+
+//
+
 
 
 
