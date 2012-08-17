@@ -61,8 +61,6 @@ var passenger = function (name,age,gender) {
 		};
 		console.log("It's time to check in."); 
 			return hrs;
-		
-
 	};
 
 	var luggageFees = function(json){
