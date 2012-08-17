@@ -51,7 +51,6 @@ var passenger = function (name,age,gender) {
 		} else {
 			console.log("I can't wait to fly to the beach, we better finish packing")
 		};
-		return answer;	
 	}; 
 
 	var checkinTime= function (hrs) {
@@ -60,7 +59,10 @@ var passenger = function (name,age,gender) {
 			console.log(name + " has " + hrsRemaining + " hours until flight check in");
 			hrsRemaining--;
 		};
-		console.log("It's time to check in.");
+		console.log("It's time to check in."); 
+			return hrs;
+		
+
 	};
 
 	var luggageFees = function(json){
@@ -73,10 +75,6 @@ var passenger = function (name,age,gender) {
 		};
 		return totalFees;
 	};
-
-
-
-
 
 
 	return { 
