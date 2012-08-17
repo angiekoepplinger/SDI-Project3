@@ -13,6 +13,23 @@ var passenger = function (name,age,gender) {
 	var luggageItems = [];
 	
 	//Functions
+	var getName = function () { 
+		return name; 
+	};
+	
+	var getAge = function () {
+		if(age < 15) {
+			console.log(name + " must be accompanied by an adult on this flight.")
+		} else {
+			console.log(name + " is an adult passenger.")
+		};
+		return age;
+	};
+
+	var getGender = function () {
+		return gender;
+	};
+
 	var addItems = function (item) {
 		for (var i =0; i < item.length; i++) {
 			if (gender === "Female") {
@@ -33,35 +50,34 @@ var passenger = function (name,age,gender) {
 			console.log("We are ready to fly to the beach!")
 		} else {
 			console.log("I can't wait to fly to the beach, we better finish packing")
-		}	
+		};
+		return answer;	
 	}; 
 
 	var checkinTime= function (hrs) {
 		var hrsRemaining= hrs;
 		while(hrsRemaining > 0){
-			console.log("We have " + hrsRemaining + " hours until our flight check in");
+			console.log(name + " has " + hrsRemaining + " hours until flight check in");
 			hrsRemaining--;
 		};
 		console.log("It's time to check in.");
-	}
-
-
-	var getName = function () { 
-		return name; 
 	};
-	
-	var getAge = function () {
-		if(age < 15) {
-			console.log(name + " must be accompanied by an adult on this flight.")
-		} else {
-			console.log(name + " is an adult passenger.")
+
+	var luggageFees = function(json){
+		var totalFees=0;
+		for (var i = 0; i < json.luggage.length; i++ ) {
+			if (json.luggage[i].weight > 50) {
+				luggageFee = (json.luggage[i].weight - 50) * 5;
+				totalFees = luggageFee + totalFees;
+			};
 		};
-		return age;
+		return totalFees;
 	};
 
-	var getGender = function () {
-		return gender;
-	};
+
+
+
+
 
 	return { 
 		"name": getName,
@@ -70,7 +86,8 @@ var passenger = function (name,age,gender) {
 		"addContents": addItems,
 		"listContents": listContents,
 		"takeFlight": takeFlight,
-		"timeRemaining": checkinTime
+		"timeRemaining": checkinTime,
+		"luggageFees": luggageFees
 	};
 
 };
@@ -111,8 +128,12 @@ console.log(passenger2.name() + " is " + passenger2.age());
 console.log(passenger3.name() + " is " + passenger3.age());
 
 console.log(" ");
-passenger1.timeRemaining(8)
+passenger1.timeRemaining(2)
+passenger2.timeRemaining(2)
+passenger3.timeRemaining(2)
 
+console.log(" ");
+console.log("Total luggage fees for this trip will be $" + passenger1.luggageFees(json));
 
 
 
